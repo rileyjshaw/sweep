@@ -5,7 +5,7 @@ A tiny javascript library for smooth HSL color transitions.
 
 ## Usage
 
-sweep.js has no dependencies, so as long as you include it before you try to use it you should be fine.
+__sweep.js__ has no dependencies, so as long it's included before it's called you should be fine.
 
 ```html
 <html>
@@ -20,20 +20,20 @@ sweep.js has no dependencies, so as long as you include it before you try to use
 </html>
 ```
 
-Whenever you want to trigger an HSL sweep, call `sweepHSL(element, fromColor, toColor, property, seconds)`, where:
+Whenever you want to trigger an HSL sweep, call `sweepHSL(fromColor, toColor, property[, seconds, target])`, where:
 
-- `element` is the element that you wish to animate
 - `fromColor` is the initial color before the transition
 - `toColor` is the final color after the transition
 - `property` is the property that you wish to animate
-- `seconds` is how long the transition should last
+- `seconds` (optional) is how long the transition should last. Default is 1s.
+- `target` (optional) is the element that you wish to animate. Default is the event target.
 
-## Example
+### Example
 ```html
 <script>
   var coolButton = document.querySelector('#coolButton');
-  coolButton.addEventListener('hover', function() {
-    sweepHSL(coolButton, '#ff0000', '#00ff00', 'background-color', 3);
+  coolButton.addEventListener('mouseover', function(e) {
+    sweepHSL('#ff0000', '#00ff00', 'background-color', 3);
   }, false);
 </script>
 ```
