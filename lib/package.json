@@ -1,0 +1,31 @@
+{
+  "name": "sweep",
+  "version": "0.0.0",
+  "description": "A tiny javascript library for smooth HSL color transitions",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "HSL",
+    "RGB",
+    "HUSL",
+    "hue",
+    "angle",
+    "transition",
+    "animation",
+    "spectrum",
+    "color"
+  ],
+  "author": "rileyjshaw <i@rileyjshaw.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "~3.8.1",
+    "gulp-rename": "~1.2.0",
+    "gulp-load-plugins": "~0.5.1",
+    "gulp-uglify": "~0.3.1",
+    "gulp-jshint": "~1.6.3",
+    "gulp-browserify": "~0.5.0",
+    "gulp-size": "~0.4.0"
+  }
+}
