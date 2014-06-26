@@ -1,0 +1,189 @@
+<style>
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #f8f8f2;
+  text-shadow: 0 1px rgba(0,0,0,0.3);
+  font-family: Consolas, Monaco, 'Andale Mono', monospace;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+  background: #1f201a;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: slategray;
+}
+
+.token.punctuation {
+  color: #f8f8f2;
+}
+
+.namespace {
+  opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol {
+  color: #f92672;
+}
+
+.token.boolean,
+.token.number{
+  color: #ae81ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.builtin {
+  color: #a6e22e;
+}
+
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+  color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value
+{
+  color: #e6db74;
+}
+
+
+.token.keyword{
+color: #66d9ef;
+}
+
+.token.regex,
+.token.important {
+  color: #fd971f;
+}
+
+.token.important {
+  font-weight: bold;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+body {
+  margin: 0;
+  border: 12px solid red;
+  font-family: 'Cabin', sans-serif;
+  text-align: center;
+  color: red;
+}
+header, footer {
+  margin: 12px;
+  padding: 0;
+  background-color: #1f201a;
+}
+header p {
+  line-height: 96px;
+  width: auto;
+  margin: 0;
+  font-size: 18px;
+  text-align: center;
+}
+footer {
+  height: 96px;
+  line-height: 96px;
+  margin-top: 8em;
+}
+h1 {
+  line-height: 48px;
+  margin: 0;
+  padding: .3em 0 .6em;
+  font-size: 120px;
+  font-weight: 600;
+}
+ul {
+  height: 96px;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0;
+  font-size: 18px;
+  list-style: none;
+  text-align: justify;
+}
+ul:after {
+  content: '';
+  display: inline-block;
+  width: 100%;
+}
+li {
+  display: inline-block;
+  line-height: 96px;
+}
+a {
+  outline: none;
+  color: inherit;
+}
+header a {
+  box-sizing: border-box;
+  padding: 1em;
+  text-decoration: none;
+}
+h2, h3 {
+  margin: 2em 0 2em 1.4em;
+  font-size: 36px;
+  text-transform: uppercase;
+  letter-spacing: 1.4em;
+}
+h3 {
+  font-size: 24px;
+}
+p {
+  line-height: 1.5em;
+  width: 20em;
+  max-width: 100%;
+  margin: 0 auto 2em;
+  font-size: 24px;
+  text-align: justify;
+}
+pre {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 480px;
+  margin: 0 auto 48px;
+  padding: 2em;
+  font-size: 16px;
+}
+</style>
