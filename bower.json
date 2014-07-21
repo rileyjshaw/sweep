@@ -33,7 +33,6 @@
     "tests"
   ],
   "dependencies": {
-    "husl": "~4.0.0",
-    "tinycolor": "~0.11.2"
+    "husl": "~4.0.0"
   }
 }
