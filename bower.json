@@ -22,7 +22,7 @@
     "spectrum",
     "color"
   ],
-  "license": "wtfpl",
+  "license": "MIT",
   "homepage": "http://rileyjshaw.com/sweep/",
   "private": true,
   "ignore": [
