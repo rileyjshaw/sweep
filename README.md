@@ -12,7 +12,7 @@ I've written an in-depth post about the need for HSL transitions [here](http://r
 ## Install
 
 ```.bash
-bower install --save sweepjs
+bower install -S sweep
 ```
 
 ...or just [download it from here](https://github.com/rileyjshaw/sweep/blob/master/bin/sweep.min.js).
