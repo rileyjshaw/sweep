@@ -17,7 +17,7 @@ bower install -S sweep
 
 ...or just [download it from here](https://github.com/rileyjshaw/sweep/blob/master/bin/sweep.min.js).
 
-All of sweep's dependencies are bundled, so all you have to do is include the script.
+Sweep's dependencies are bundled; all you have to do is include the script.
 
 ```.html
 <script src="path/to/sweep.js"></script>
