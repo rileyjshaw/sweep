@@ -1,7 +1,7 @@
 sweep.js
 =====
 
-A JavaScript library for smoother color transitions.
+A JavaScript library for smoother color transitions. Project page lives [here](http://rileyjshaw.com/sweep/).
 
 ## About
 
