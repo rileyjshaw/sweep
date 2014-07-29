@@ -25,7 +25,6 @@
     "gulp-load-plugins": "~0.5.1",
     "gulp-uglify": "~0.3.1",
     "gulp-jshint": "~1.6.3",
-    "gulp-size": "~0.4.0",
     "vinyl-source-stream": "~0.1.1",
     "gulp-streamify": "0.0.5"
   }
