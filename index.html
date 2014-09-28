@@ -16,21 +16,22 @@
       <li><a data-scroll href="#about">About</a></li>
       <li><a data-scroll href="#install">Install</a></li>
       <li><a data-scroll href="#usage">Usage</a></li>
-      <li><a data-scroll href="http://www.github.com/rileyjshaw/sweep">GitHub</a></li>
+      <li><a href="http://www.github.com/rileyjshaw/sweep">GitHub</a></li>
     </ul>
   </header>
 
   <h2 id="about">About</h2>
-    <p><strong>sweep.js</strong> is a small JavaScript library (5kb zipped) that enables proper color transitions through the HSL and <a href="http://www.boronine.com/husl/">HUSL</a> spaces. Ordinary CSS transitions or existing frameworks convert HSL colors to RGB <em>before</em> transitioning. <strong>sweep.js</strong> addresses this by letting you transition through the color spectrum.</p>
+    <p><strong>sweep.js</strong> is a small JavaScript library (5kb zipped) that enables proper color transitions through the HSL and <a href="http://www.boronine.com/husl/">HUSL</a> spaces. Ordinary CSS transitions and existing frameworks convert HSL colors to RGB <em>before</em> transitioning. <strong>sweep.js</strong> addresses this by letting you transition through the color spectrum.</p>
     <p>I've written an in-depth post about the need for HSL transitions <a href="http://rileyjshaw.com/blog/hue-angle-transitions/">here</a>.</p>
 
   <h2 id="install">Install</h2>
+    <p>As a bundle:</p>
     <pre><code class="language-bash">bower install -S sweep</code></pre>
+    <p>As a standalone library:</p>
+    <pre><code class="language-markup">&lt;script src="//cdn.jsdelivr.net/sweep/latest/mainfile"&gt;&lt;/script&gt;</code></pre>
     <p>...or just <a href="https://github.com/rileyjshaw/sweep/tree/master/bin/sweep.min.js">visit the repo</a>.</p>
 
-    <p>Sweep's dependencies are bundled; all you have to do is include the script.</p>
-    <pre><code class="language-markup">&lt;script src="path/to/sweep.js"&gt;&lt;/script&gt;</code></pre>
-    <p>Sweep is wrapped with <a href="https://github.com/umdjs/umd">UMD</a>, so it'll also work as a module in your system of choice.</p>
+    <p>Sweep's dependencies are bundled; all you have to do is include the script. Sweep is wrapped with <a href="https://github.com/umdjs/umd">UMD</a>, so it'll also work as a module in your system of choice.</p>
 
   <h2 id="usage">Usage</h2>
   <p>Using <strong>sweep.js</strong> to transition an element's color is easy. Whenever you want to trigger an HSL sweep, call:</p>
