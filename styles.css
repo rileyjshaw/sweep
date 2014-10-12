@@ -34,6 +34,10 @@ pre[class*="language-"] {
   padding: .1em;
 }
 
+p > code[class*="language-"] {
+  font-size: 20px;
+}
+
 .token.comment,
 .token.prolog,
 .token.doctype,
@@ -109,11 +113,13 @@ body {
   text-align: center;
   color: red;
 }
+
 header, footer {
   margin: 12px;
   padding: 0;
   background-color: #1f201a;
 }
+
 header p {
   line-height: 96px;
   width: auto;
@@ -121,9 +127,11 @@ header p {
   font-size: 18px;
   text-align: center;
 }
+
 .sticky {
   padding-top: 360px;
 }
+
 .sticky header {
   position: fixed;
   top: 0;
@@ -131,14 +139,17 @@ header p {
   right: 12px;
   box-shadow: 0 -12px rgba(255, 255, 255, 0.95);
 }
+
 .sticky header p, .sticky header h1 {
   display: none;
 }
+
 footer {
   height: 96px;
   line-height: 96px;
   margin-top: 5em;
 }
+
 h1 {
   line-height: 48px;
   margin: 0;
@@ -146,6 +157,7 @@ h1 {
   font-size: 120px;
   font-weight: 600;
 }
+
 header ul {
   height: 96px;
   max-width: 480px;
@@ -155,37 +167,44 @@ header ul {
   list-style: none;
   text-align: justify;
 }
+
 header ul:after {
   content: '';
   display: inline-block;
   width: 100%;
 }
+
 header li {
   display: inline-block;
   line-height: 96px;
 }
+
 a {
   outline: none;
   color: inherit;
 }
+
 header a {
   box-sizing: border-box;
   padding: 1em;
   text-decoration: none;
 }
+
 h2 {
   margin: 2em 0 2em 1.4em;
   font-size: 36px;
   text-transform: uppercase;
   letter-spacing: 1.4em;
 }
+
 body > ul {
   line-height: 2em;
   width: 480px;
-  margin: auto;
+  margin: 0 auto 2em;
   font-size: 18px;
   text-align: left;
 }
+
 p {
   line-height: 1.5em;
   width: 20em;
@@ -194,6 +213,7 @@ p {
   font-size: 24px;
   text-align: justify;
 }
+
 pre {
   box-sizing: border-box;
   display: inline-block;
@@ -202,6 +222,11 @@ pre {
   padding: 2em;
   font-size: 16px;
 }
+
+.methods {
+  margin-bottom: 0;
+}
+
 .example {
   height: 72px;
   width: 144px;
@@ -212,11 +237,13 @@ pre {
   cursor: pointer;
   color: black;
 }
+
 .example p {
   line-height: 72px;
   font-size: 16px;
   text-align: center;
 }
+
 .standalone {
   text-align: center;
 }
