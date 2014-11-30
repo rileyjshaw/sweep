@@ -72,4 +72,4 @@ ex2.addEventListener('mouseleave', function() {
 }, false);
 ```
 
-Licenced under [MIT](https://github.com/rileyjshaw/sweep/blob/master/LICENSE). Created by [rileyjshaw](http://rileyjshaw.com/).
+Licensed under [MIT](https://github.com/rileyjshaw/sweep/blob/master/LICENSE). Created by [rileyjshaw](http://rileyjshaw.com/).
