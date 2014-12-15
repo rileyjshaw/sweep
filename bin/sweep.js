@@ -711,15 +711,15 @@ function convert (color, outRgb) {
       { r: 0, g: 0, b: 0, a: 0 } :
       { h: 0, s: 0, l: 0, a: 0 };
   }
-  else if ((match = matchers.rgb.exec(color)) || (match = matchers.rgba.exec(color))) {
+  else if ((match = matchers.rgba.exec(color)) || (match = matchers.rgb.exec(color))) {
     color = {
       r: parseInt(match[1]),
       g: parseInt(match[2]),
       b: parseInt(match[3]),
-      a: parseInt(match[4]) || 1
+      a: parseFloat(match[4]) || 1
     };
   }
-  else if ((match = matchers.hsl.exec(color)) || (match = matchers.hsla.exec(color))) {
+  else if ((match = matchers.hsla.exec(color)) || (match = matchers.hsl.exec(color))) {
     inRgb = false;
     color = {
       h: parseFloat(match[1]),
@@ -733,7 +733,7 @@ function convert (color, outRgb) {
       r: parseInt(match[2], 16),
       g: parseInt(match[3], 16),
       b: parseInt(match[4], 16),
-      a: parseInt(match[1], 16) / 255
+      a: parseFloat(match[1], 16) / 255
     };
   }
   else if ((match = matchers.hex6.exec(color)) || (match = matchers.hex6.exec(cssNames[color]))) {
