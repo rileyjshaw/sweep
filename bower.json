@@ -1,6 +1,6 @@
 {
   "name": "sweep",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "authors": [
     "rileyjshaw <i@rileyjshaw.com>"
   ],
@@ -28,6 +28,6 @@
     "bower_components"
   ],
   "dependencies": {
-    "husl": "~4.0.0"
+    "husl": "~5.0.0"
   }
 }
