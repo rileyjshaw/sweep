@@ -1,6 +1,6 @@
 {
     "name": "sweep",
-    "version": "1.2.0",
+    "version": "1.2.3",
     "description": "A tiny javascript library for smooth HSL color transitions",
     "main": "main.js",
     "scripts": {
