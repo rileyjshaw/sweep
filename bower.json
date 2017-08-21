@@ -1,33 +1,30 @@
 {
-  "name": "sweep",
-  "version": "1.2.2",
-  "authors": [
-    "rileyjshaw <i@rileyjshaw.com>"
-  ],
-  "description": "A JavaScript library for smoother color transitions",
-  "main": "bin/sweep.min.js",
-  "moduleType": [
-    "umd"
-  ],
-  "keywords": [
-    "HSL",
-    "RGB",
-    "HUSL",
-    "hue",
-    "angle",
-    "transition",
-    "animation",
-    "spectrum",
-    "color"
-  ],
-  "license": "MIT",
-  "homepage": "http://rileyjshaw.com/sweep/",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components"
-  ],
-  "dependencies": {
-    "husl": "~5.0.0"
-  }
+    "name": "sweep",
+    "version": "1.2.2",
+    "authors": [
+        "rileyjshaw <i@rileyjshaw.com>"
+    ],
+    "description": "A JavaScript library for smoother color transitions",
+    "main": "bin/sweep.min.js",
+    "moduleType": [
+        "umd"
+    ],
+    "keywords": [
+        "HSL",
+        "RGB",
+        "HSLuv",
+        "hue",
+        "angle",
+        "transition",
+        "animation",
+        "spectrum",
+        "color"
+    ],
+    "license": "MIT",
+    "homepage": "http://rileyjshaw.com/sweep/",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components"
+    ],
 }
