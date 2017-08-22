@@ -30,11 +30,11 @@ Sweep is wrapped with [UMD](https://github.com/umdjs/umd), so it'll also work as
 Using sweep.js to transition an element's color is easy. Whenever you want to trigger an HSL sweep, call:
 
 ```.js
-sweep(target, properties, fromColor, toColor[, options])
+sweep(targets, properties, fromColor, toColor[, options])
 ```
 
- - `target` - element that you wish to animate
- - `properties` - CSS properties that you wish to animate (string or array of strings)
+ - `targets` - element or array of elements that you wish to animate
+ - `properties` - CSS properties that you wish to animate on those targets (string or array of strings)
  - `fromColor` - initial color before the transition
  - `toColor` - final color after the transition
  - `options` (optional) - an object that can set the following:
