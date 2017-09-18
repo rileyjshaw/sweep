@@ -1,33 +1,33 @@
 {
-    "name": "sweep",
-    "version": "1.2.3",
-    "description": "A tiny javascript library for smooth HSL color transitions",
-    "main": "main.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "keywords": [
-        "HSL",
-        "RGB",
-        "HSLuv",
-        "hue",
-        "angle",
-        "transition",
-        "animation",
-        "spectrum",
-        "color"
-    ],
-    "author": "rileyjshaw <i@rileyjshaw.com>",
-    "license": "MIT",
-    "devDependencies": {
-        "browserify": "^6.0.3",
-        "gulp": "~3.8.1",
-        "gulp-jshint": "~1.6.3",
-        "gulp-load-plugins": "~0.5.1",
-        "gulp-rename": "~1.2.0",
-        "gulp-streamify": "0.0.5",
-        "gulp-uglify": "~0.3.1",
-        "vinyl-source-stream": "~0.1.1",
-        "hsluv": "^0.0.1"
-    }
+  "name": "sweep",
+  "version": "1.2.3",
+  "description": "A tiny javascript library for smooth HSL color transitions",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "HSL",
+    "RGB",
+    "HSLuv",
+    "hue",
+    "angle",
+    "transition",
+    "animation",
+    "spectrum",
+    "color"
+  ],
+  "author": "rileyjshaw <i@rileyjshaw.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "browserify": "^6.0.3",
+    "gulp": "~3.8.1",
+    "gulp-jshint": "~1.6.3",
+    "gulp-load-plugins": "~0.5.1",
+    "gulp-rename": "~1.2.0",
+    "gulp-streamify": "0.0.5",
+    "gulp-uglify": "~0.3.1",
+    "vinyl-source-stream": "~0.1.1",
+    "hsluv": "^0.0.1"
+  }
 }
