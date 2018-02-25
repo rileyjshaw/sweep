@@ -189,7 +189,7 @@ var sweep = (function() {
         0,
         (to.s - from.s) / steps,
         (to.l - from.l) / steps,
-        (from.a - to.a) / steps
+        (to.a - from.a) / steps
       ];
 
       // if we're transitioning to/from black, grey, or white, don't move the hue angle. Otherwise...
