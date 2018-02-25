@@ -1,23 +1,21 @@
 !function(e){if("object"==typeof exports&&"undefined"!=typeof module)module.exports=e();else if("function"==typeof define&&define.amd)define([],e);else{var f;"undefined"!=typeof window?f=window:"undefined"!=typeof global?f=global:"undefined"!=typeof self&&(f=self),f.sweep=e()}}(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var hsluv = require("../node_modules/hsluv/hsluv.js");
-var convert = require("./convert.js");
+var hsluv = require('../node_modules/hsluv/hsluv.js');
+var convert = require('./convert.js');
 
 var sweep = (function() {
+
   // keep current animations in this closure; deal with each in
   // a single tick to prevent dom thrashing and event hell
   var batch = [];
 
-  function tick() {
+  function tick () {
     // increment frames step:
-    batch.forEach(function(animation) {
-      ++animation.frame;
-    });
+    batch.forEach(function (animation) { ++animation.frame; });
 
     // calculation step:
-    var computedSteps = [],
-      callbacks = [];
+    var computedSteps = [], callbacks = [];
 
-    batch.forEach(function(animation) {
+    batch.forEach(function (animation) {
       var targets = animation.targets;
       var properties = animation.properties;
       var from = animation.from;
@@ -26,13 +24,12 @@ var sweep = (function() {
       var deltas = animation.deltas;
 
       // components = [h, s, l, a] || [r, g, b, a]
-      var composed,
-        components = new Array(4);
+      var composed, components = new Array(4);
 
       // set alpha level
       components[3] = from.a + deltas[3] * frame;
 
-      if (space === "RGB") {
+      if (space === 'RGB') {
         // red
         components[0] = Math.floor(from.r + deltas[0] * frame);
         // green
@@ -40,37 +37,30 @@ var sweep = (function() {
         // blue
         components[2] = Math.floor(from.b + deltas[2] * frame);
 
-        composed = "rgba(" + [components] + ")";
+        composed = 'rgba(' + [components] + ')';
+
       } else {
-        // it's HSL(uv)
+         // it's HSL(uv)
         // hue
         components[0] = (Math.floor(from.h + deltas[0] * frame) + 360) % 360;
         // saturation
         components[1] = Math.floor((from.s + deltas[1] * frame) * 100);
         // lightness
         components[2] = Math.floor((from.l + deltas[2] * frame) * 100);
-        if (space === "HSL") {
-          composed =
-            "hsla(" +
-            components[0] +
-            "," +
-            components[1] +
-            "%," +
-            components[2] +
-            "%," +
-            components[3] +
-            ")";
+
+        if (space === 'HSL') {
+          composed = 'hsla(' + components[0] + ',' +
+                               components[1] + '%,' +
+                               components[2] + '%,' +
+                               components[3] + ')';
         } else {
-          composed =
-            "rgba(" +
-            hsluv
-            .hsluvToRgb([components[0], components[1], components[2]])
-            .map(function(component) {
-              return Math.floor(component * 255);
-            }) +
-            "," +
-            components[3] +
-            ")";
+          composed = 'rgba(' + hsluv.hsluvToRgb([
+            components[0],
+            components[1],
+            components[2]
+          ]).map(function (component) {
+            return Math.floor(component * 255);
+          }) + ',' + components[3] + ')';
         }
       }
 
@@ -82,8 +72,8 @@ var sweep = (function() {
     });
 
     // DOM painting step:
-    computedSteps.forEach(function(step) {
-      step.properties.forEach(function(property) {
+    computedSteps.forEach(function (step) {
+      step.properties.forEach(function (property) {
         step.targets.forEach(function(target) {
           target.style[property] = step.composed;
         });
@@ -91,13 +81,11 @@ var sweep = (function() {
     });
 
     // remove finished animations step:
-    callbacks = batch
-      .map(function(animation) {
-        return animation.frame === animation.end ? animation.pause() : false;
-      })
-      .filter(function(animation) {
-        return typeof animation === "function";
-      });
+    callbacks = batch.map(function (animation) {
+      return animation.frame === animation.end ? animation.pause() : false;
+    }).filter(function (animation) {
+      return typeof animation === 'function';
+    });
 
     if (batch.length) {
       requestAnimationFrame(tick);
@@ -111,47 +99,39 @@ var sweep = (function() {
   }
 
   // push the animation to batch and start a tick if one doesn't already exist
-  function queueAnimation() {
-    if (batch.indexOf(this) === -1 && batch.push(this) === 1)
-      requestAnimationFrame(tick);
+  function queueAnimation () {
+    if (batch.indexOf(this) === -1 && batch.push(this) === 1) requestAnimationFrame(tick);
   }
 
   // remove the animation from batch and return its callback
-  function dequeueAnimation() {
+  function dequeueAnimation () {
     return (batch.splice(batch.indexOf(this), 1)[0] || {}).callback;
   }
 
   return function(targets, properties, from, to, args) {
-    var steps,
-      angle,
-      callback,
-      direction,
-      duration,
-      space,
-      deltas = [];
+    var steps, angle, callback, direction, duration, space, deltas = [];
 
     if (typeof properties === "string") properties = [properties];
     if (!NodeList.prototype.isPrototypeOf(targets)) {
-  if (!Array.isArray(targets)) targets = [targets];
-  if (targets.some(function(target) {return !(target instanceof Element);}))
-    throw 'The first argument to sweep() must be an array of DOM elements or a single DOM element';
-}
+      if (!Array.isArray(targets)) targets = [targets];
+      if (targets.some(function(target) {return !(target instanceof Element);}))
+        throw 'The first argument to sweep() must be an array of DOM elements or a single DOM element';
+    }
     if (
       properties.some(function(property) {
         return typeof targets[0].style[property] !== "string";
       })
     )
       throw "The second argument to sweep() must be either a string or an array of strings";
+    if (typeof from !== 'string')
+      throw 'The third argument to sweep() must be a string';
 
-    if (typeof from !== "string")
-      throw "The third argument to sweep() must be a string";
-
-    if (typeof to !== "string")
-      throw "The fourth argument to sweep() must be a string";
+    if (typeof to !== 'string')
+      throw 'The fourth argument to sweep() must be a string';
 
     if (args) {
-      if (typeof args !== "object")
-        throw "The fifth argument to sweep() must be an object";
+      if (typeof args !== 'object')
+        throw 'The fifth argument to sweep() must be an object';
 
       callback = args.callback;
       direction = args.direction;
@@ -164,14 +144,14 @@ var sweep = (function() {
       duration = 800;
     }
 
-    if (typeof space === "string") {
+    if (typeof space === 'string') {
       space = space.toUpperCase();
-      if (space.slice(-1) === "A") space = space.slice(0, -1);
+      if (space.slice(-1) === 'A') space = space.slice(0, -1);
     }
 
     steps = Math.ceil(duration * 60 / 1000); // 60 fps
 
-    if (space === "RGB") {
+    if (space === 'RGB') {
       // convert colors to { r: _, g: _, b: _, a: _ } format
       from = convert.toRgba(from);
       to = convert.toRgba(to);
@@ -221,17 +201,19 @@ var sweep = (function() {
           (from.a - to.a) / steps
         ];
       }
+
       // if we're transitioning to/from black, grey, or white, don't move the hue angle. Otherwise...
       if (to.s * from.s * to.l * from.l || to.l !== 100 || from.l !== 100) {
         // bind dH to [0, 360)
-        deltas[0] = (to.h - from.h + 360) % 360;
-        if ((direction !== 1 && deltas[0] > 180) || direction === -1) {
+        deltas[0] = ((to.h - from.h) + 360) % 360;
+        if (direction !== 1 && deltas[0] > 180 || direction === -1) {
           // spin counterclockwise
           deltas[0] -= 360;
         }
         deltas[0] /= steps;
       }
     }
+
     // throw 'em all into args before passing into queueAnimation
     args.frame = 0;
     args.targets = targets;
@@ -256,29 +238,23 @@ module.exports = sweep;
  * to an hsla or rgba object.
  */
 
-function rgbaToHsla(color) {
-  var r = color.r / 255,
-    g = color.g / 255,
-    b = color.b / 255;
-  var max = Math.max(r, g, b),
-    min = Math.min(r, g, b);
+function rgbaToHsla (color) {
+  var r = color.r / 255, g = color.g / 255, b = color.b / 255;
+  var max = Math.max(r, g, b), min = Math.min(r, g, b);
   var h, s, l = (max + min) / 2;
 
-  if (max == min) {
+  if (max == min){
     h = s = 0; // achromatic
   } else {
     var d = max - min;
     s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-    switch (max) {
-      case r:
-        h = (g - b) / d + (g < b ? 6 : 0);
-        break;
-      case g:
-        h = (b - r) / d + 2;
-        break;
-      case b:
-        h = (r - g) / d + 4;
-        break;
+    switch (max){
+      case r: h = (g - b) / d + (g < b ? 6 : 0);
+      break;
+      case g: h = (b - r) / d + 2;
+      break;
+      case b: h = (r - g) / d + 4;
+      break;
     }
     h /= 6;
   }
@@ -290,28 +266,26 @@ function rgbaToHsla(color) {
   };
 }
 
-function hslaToRgba(color) {
-  function hueToRgb(p, q, t) {
+function hslaToRgba (color) {
+  function hueToRgb (p, q, t) {
     if (t < 0) t += 1;
     if (t > 1) t -= 1;
-    if (t < 1 / 6) return p + (q - p) * 6 * t;
-    if (t < 1 / 2) return q;
-    if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
+    if (t < 1/6) return p + (q - p) * 6 * t;
+    if (t < 1/2) return q;
+    if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
     return p;
   }
 
-  var r, g, b, q, p, h = color.h,
-    s = color.s,
-    l = color.l;
+  var r, g, b, q, p, h = color.h, s = color.s, l = color.l;
 
   if (s === 0) {
     r = g = b = l; // achromatic
   } else {
     q = l < 0.5 ? l * (1 + s) : l + s - l * s;
     p = 2 * l - q;
-    r = hueToRgb(p, q, h + 1 / 3);
+    r = hueToRgb(p, q, h + 1/3);
     g = hueToRgb(p, q, h);
-    b = hueToRgb(p, q, h - 1 / 3);
+    b = hueToRgb(p, q, h - 1/3);
   }
 
   return {
@@ -322,7 +296,7 @@ function hslaToRgba(color) {
   };
 }
 
-function convert(color, outRgb) {
+function convert (color, outRgb) {
   var trimLeft = /^[\s,#]+/;
   var trimRight = /\s+$/;
   var match, inRgb = true;
@@ -330,25 +304,19 @@ function convert(color, outRgb) {
   color = color.replace(trimLeft, '').replace(trimRight, '').toLowerCase();
 
   if (color === 'transparent') {
-    return outRgb ? {
-      r: 0,
-      g: 0,
-      b: 0,
-      a: 0
-    } : {
-      h: 0,
-      s: 0,
-      l: 0,
-      a: 0
-    };
-  } else if ((match = matchers.rgba.exec(color)) || (match = matchers.rgb.exec(color))) {
+    return outRgb ?
+      { r: 0, g: 0, b: 0, a: 0 } :
+      { h: 0, s: 0, l: 0, a: 0 };
+  }
+  else if ((match = matchers.rgba.exec(color)) || (match = matchers.rgb.exec(color))) {
     color = {
       r: parseInt(match[1]),
       g: parseInt(match[2]),
       b: parseInt(match[3]),
       a: parseFloat(match[4]) || 1
     };
-  } else if ((match = matchers.hsla.exec(color)) || (match = matchers.hsl.exec(color))) {
+  }
+  else if ((match = matchers.hsla.exec(color)) || (match = matchers.hsl.exec(color))) {
     inRgb = false;
     color = {
       h: parseFloat(match[1]),
@@ -356,21 +324,24 @@ function convert(color, outRgb) {
       l: parseFloat(match[3]),
       a: parseFloat(match[4]) || 1
     };
-  } else if ((match = matchers.hex8.exec(color))) {
+  }
+  else if ((match = matchers.hex8.exec(color))) {
     color = {
       r: parseInt(match[2], 16),
       g: parseInt(match[3], 16),
       b: parseInt(match[4], 16),
       a: parseFloat(match[1], 16) / 255
     };
-  } else if ((match = matchers.hex6.exec(color)) || (match = matchers.hex6.exec(cssNames[color]))) {
+  }
+  else if ((match = matchers.hex6.exec(color)) || (match = matchers.hex6.exec(cssNames[color]))) {
     color = {
       r: parseInt(match[1], 16),
       g: parseInt(match[2], 16),
       b: parseInt(match[3], 16),
       a: 1
     };
-  } else if ((match = matchers.hex3.exec(color)) || (match = matchers.hex3.exec(cssNames[color]))) {
+  }
+  else if ((match = matchers.hex3.exec(color)) || (match = matchers.hex3.exec(cssNames[color]))) {
     color = {
       r: parseInt(match[1] + '' + match[1], 16),
       g: parseInt(match[2] + '' + match[2], 16),
@@ -381,20 +352,20 @@ function convert(color, outRgb) {
 
   return outRgb === inRgb ?
     color : outRgb ?
-    hslaToRgba(color) :
-    rgbaToHsla(color);
+      hslaToRgba(color) :
+      rgbaToHsla(color);
 }
 
-function toRgba(color) {
+function toRgba (color) {
   return convert(color, true);
 }
 
-function toHsla(color) {
+function toHsla (color) {
   return convert(color, false);
 }
 
 // From tinycolor.js http://bgrins.github.io/TinyColor/docs/tinycolor.html
-var matchers = (function() {
+var matchers = (function () {
   // <http://www.w3.org/TR/css3-values/#integers>
   var CSS_INTEGER = "[-\\+]?\\d+%?";
 
