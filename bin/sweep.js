@@ -1,5 +1,5 @@
 !function(e){if("object"==typeof exports&&"undefined"!=typeof module)module.exports=e();else if("function"==typeof define&&define.amd)define([],e);else{var f;"undefined"!=typeof window?f=window:"undefined"!=typeof global?f=global:"undefined"!=typeof self&&(f=self),f.sweep=e()}}(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var hsluv = require('../node_modules/hsluv/hsluv.js');
+var hsluv = require('hsluv');
 var convert = require('./convert.js');
 
 var sweep = (function() {
@@ -40,7 +40,7 @@ var sweep = (function() {
         composed = 'rgba(' + [components] + ')';
 
       } else {
-         // it's HSL(uv)
+        // it's HSL(uv)
         // hue
         components[0] = (Math.floor(from.h + deltas[0] * frame) + 360) % 360;
         // saturation
@@ -167,14 +167,6 @@ var sweep = (function() {
         // convert colors to { h: _, s: _, l: _, a: _ } format
         from = convert.toHsla(from);
         to = convert.toHsla(to);
-
-        // deltas = [dH, dS, dL, dA]
-        deltas = [
-          0,
-          (to.s - from.s) / steps,
-          (to.l - from.l) / steps,
-          (to.a - from.a) / steps
-        ];
       } else {
         // space is HSLuv
         from = convert.toRgba(from);
@@ -191,14 +183,14 @@ var sweep = (function() {
         to.h = toHSLuv[0];
         to.s = toHSLuv[1] / 100;
         to.l = toHSLuv[2] / 100;
-        // deltas = [dH, dS, dL, dA]
-        deltas = [
-          0,
-          (to.s - from.s) / steps,
-          (to.l - from.l) / steps,
-          (from.a - to.a) / steps
-        ];
       }
+      // deltas = [dH, dS, dL, dA]
+      deltas = [
+        0,
+        (to.s - from.s) / steps,
+        (to.l - from.l) / steps,
+        (from.a - to.a) / steps
+      ];
 
       // if we're transitioning to/from black, grey, or white, don't move the hue angle. Otherwise...
       if (to.s * from.s * to.l * from.l || to.l !== 100 || from.l !== 100) {
@@ -229,7 +221,7 @@ var sweep = (function() {
 
 module.exports = sweep;
 
-},{"../node_modules/hsluv/hsluv.js":3,"./convert.js":2}],2:[function(require,module,exports){
+},{"./convert.js":2,"hsluv":3}],2:[function(require,module,exports){
 /**
  * Lightweight module to convert colors from
  * rgb, rgba, hex, hsl, hsla, or CSS named colors
