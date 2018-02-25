@@ -5,7 +5,7 @@ A JavaScript library for smoother color transitions. Project page lives [here](h
 
 ## About
 
-__sweep.js__ is a small JavaScript library (5kb zipped) that enables proper color transitions through the HSL and HUSL spaces. Ordinary CSS transitions or existing frameworks convert HSL colors to RGB _before_ transitioning. __sweep.js__ addresses this by letting you transition through the color spectrum.
+__sweep.js__ is a small JavaScript library (5kb zipped) that enables proper color transitions through the HSL and HSLuv spaces. Ordinary CSS transitions or existing frameworks convert HSL colors to RGB _before_ transitioning. __sweep.js__ addresses this by letting you transition through the color spectrum.
 
 I've written an in-depth post about the need for HSL transitions [here](http://rileyjshaw.com/blog/hue-angle-transitions/).
 
@@ -30,18 +30,18 @@ Sweep is wrapped with [UMD](https://github.com/umdjs/umd), so it'll also work as
 Using sweep.js to transition an element's color is easy. Whenever you want to trigger an HSL sweep, call:
 
 ```.js
-sweep(target, properties, fromColor, toColor[, options])
+sweep(targets, properties, fromColor, toColor[, options])
 ```
 
- - `target` - element that you wish to animate
- - `properties` - CSS properties that you wish to animate (string or array of strings)
+ - `targets` - element or array of elements that you wish to animate
+ - `properties` - CSS properties that you wish to animate on those targets (string or array of strings)
  - `fromColor` - initial color before the transition
  - `toColor` - final color after the transition
  - `options` (optional) - an object that can set the following:
    - `callback` - function to be called once the animation finishes
    - `direction` - clockwise (1) or counterclockwise (-1)
    - `duration` - time (in ms) to complete the animation
-   - `space` - 'HSL', 'HUSL', or 'RGB'
+   - `space` - 'HSL', 'HSLuv', or 'RGB'
 
 ## Examples
 
