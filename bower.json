@@ -1,6 +1,6 @@
 {
   "name": "sweep",
-  "version": "1.2.3",
+  "version": "1.1.0",
   "authors": [
     "rileyjshaw <i@rileyjshaw.com>"
   ],
@@ -12,7 +12,7 @@
   "keywords": [
     "HSL",
     "RGB",
-    "HSLuv",
+    "HUSL",
     "hue",
     "angle",
     "transition",
@@ -27,4 +27,7 @@
     "node_modules",
     "bower_components"
   ],
+  "dependencies": {
+    "husl": "~4.0.0"
+  }
 }
